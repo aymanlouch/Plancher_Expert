@@ -1,0 +1,69 @@
+﻿@page
+@model Plancher_Expert.Pages.FactureModel
+@if (Model.HasData)
+{
+	<div class="container bootstrap snippets bootdey" style="margin-top : 50px">
+		<h1 style="text-align : center "><strong>Facture N'</strong> 01/2023</h1>
+		<p style="text-align : center ">@DateTime.Now</p>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="col-md-6 col-sm-6 text-left">
+					<h4><strong>Client</strong> Details</h4>
+					<ul class="list-unstyled">
+						<li><strong>Nom:</strong> @Model.nomC</li>
+						<li><strong>Prenom:</strong> @Model.prenomC</li>
+						<li><strong>Address:</strong> @Model.addressC</li>
+						<li><strong>Tel:</strong> @Model.telC</li>
+					</ul>
+				</div>
+
+				<div class="table-responsive">
+					<table class="table table-condensed nomargin">
+						<thead>
+							<tr>
+								<th>Description</th>
+								<th>Surface</th>
+								<th>Prix Materiel /m²</th>
+								<th>Prix Main d'oeuvre /m²</th>
+								<th>Prix HT</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div><strong>@Model.FloorType</strong></div>
+								</td>
+								<td>@Model.Area m²</td>
+								<td>@Model.LaborRate $</td>
+								<td>@Model.MaterialRate $</td>
+								<td>@Model.CostHT $</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<hr class="nomargin-top">
+				<div class="row">
+					<div class="col-sm-6 text-left">
+						<h4><strong>Contact</strong> Details</h4>
+
+						<address>
+							<strong>Address:</strong> 122, Av. Moulay Ismail, Tanger, Maroc <br>	
+							<strong>Phone/Fax:</strong> 06 97 34 78 83 / 05 39 80 55 00<br>
+							<strong>Email:</strong> support@plancher-expert.com
+						</address>
+					</div>
+
+					<div class="col-sm-6 text-right">
+						<ul class="list-unstyled">
+							<li><strong>Cout du materiel :</strong> @Model.InstallationCost $</li>
+							<li><strong>Cout de l'installation :</strong> @Model.MaterialCost $</li>
+							<li><strong>TVA 15%:</strong> @Model.TVA $</li>
+							<li><strong>Prix TTC:</strong> @Model.TotalCost $</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+}

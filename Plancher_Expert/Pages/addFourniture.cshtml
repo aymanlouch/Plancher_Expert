@@ -1,0 +1,41 @@
+﻿@page
+@model Plancher_Expert.Pages.addFournitureModel
+@{
+}
+<section class="contact_section  long_section" style="text-align : center">
+    <div class="container" >
+        <div class="">
+            <div class="col-md" >
+                <div class="form_container" >
+                    <div class="heading_container">
+                        <h2>
+                            Ajouter un produit
+                        </h2>
+                    </div>
+                    <form method="get">
+                        <div>
+                            <input type="text" placeholder="Nom du produit" name="FloorType" value="@Model.f.FloorType"/>
+                        </div>
+                        <div>
+                            <input type="number" placeholder="Prix du materiel" name="MaterialRate" value="@Model.f.MaterialRate" />
+                        </div>
+                        <div>
+                            <input type="number" placeholder="Prix de la main d'oeuvre" name="LaborRate" value="@Model.f.LaborRate" />
+                        </div>
+                        <div>
+                            <input type="text" placeholder="NomID" name="nomID" value="@Model.f.nomID" />
+                        </div>
+                        <div>
+                            <input type="text" class="message-box" placeholder="Description" name="Description" value="@Model.f.Description" />
+                        </div>
+                        <div class="btn_box">
+                            <button type="submit">Valider</button>
+                            <a class="btn_box" href="/" role="button">Cancel</a>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

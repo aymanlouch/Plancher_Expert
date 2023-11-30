@@ -1,0 +1,45 @@
+﻿@page
+@model Plancher_Expert.Pages.Plancher_ceramiqueModel
+@{
+}
+@foreach (var frnt in Model.fournitureList)
+{
+    @if (Model.IdP == frnt.Id)
+    {
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="~/Images/plancher_ceramique.jpg" alt="..." /></div>                    <div class="col-md-6">
+                        <h1 class="display-5 fw-bolder">@frnt.FloorType</h1>
+                        <div class="fs-5 mb-5">
+                            <p class="price_heading">
+                                Prix du materiel : <span>$</span> @frnt.MaterialRate/m²
+                            </p>
+                            <p class="price_heading">
+                                Prix de la main d'oeuvre : <span>$</span> @frnt.LaborRate/m²
+                            </p>
+                        </div>
+                        <p class="">
+                            @frnt.Description<br /> <br />
+                            Veuillez saisir les dimensions de votre surface :
+                        </p>
+                        <div class="d-flex">
+                            <form action="/Facture">
+                                <input type="number" step="0.01" class="" placeholder="Longueur" name="length" required>
+                                <input type="number" step="0.01" class="" placeholder="Largeur" name="width" required>
+                                <p><br /></p>
+                                <input type="text" class="" placeholder="Nom" name="nomC" required>
+                                <input type="text" class="" placeholder="Prenom" name="prenomC" required>
+                                <input type="text" class="" placeholder="Address" name="addressC" required>
+                                <input type="text" class="" placeholder="Tel" name="telC" required>
+                                <p><br /></p>
+                                <button type="submit" class="btn btn-outline-dark flex-shrink-0" style="background-color : #6bb7be" name="IdP" value="@frnt.Id">Valider la commande</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+}
+

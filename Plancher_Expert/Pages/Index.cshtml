@@ -1,0 +1,207 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<link rel="stylesheet" href="~/css/Style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- jQery -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<!-- bootstrap js -->
+<script src="js/bootstrap.js"></script>
+<!-- custom js -->
+<div class="hero_area">
+    <!-- slider section -->
+    <section class="slider_section long_section">
+        <div id="customCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="detail-box">
+                                    <h1>
+                                        For All Your <br>
+                                        Furniture Needs
+                                    </h1>
+                                    <div class="btn-box">
+                                        <a href="/Privacy" class="btn1">
+                                            Contact Us
+                                        </a>
+                                        <a href="/Apropos" class="btn2">
+                                            About Us
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="img-box">
+                                    <img src="images/slider-img2.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="detail-box">
+                                    <h1>
+                                        For All Your <br>
+                                        Furniture Needs
+                                    </h1>
+                                    <div class="btn-box">
+                                        <a href="/Privacy" class="btn1">
+                                            Contact Us
+                                        </a>
+                                        <a href="/Apropos" class="btn2">
+                                            About Us
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="img-box">
+                                    <img src="images/slider-img.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="detail-box">
+                                    <h1>
+                                        For All Your <br>
+                                        Furniture Needs
+                                    </h1>
+                                    <div class="btn-box">
+                                        <a href="/Privacy" class="btn1">
+                                            Contact Us
+                                        </a>
+                                        <a href="/Apropos" class="btn2">
+                                            About Us
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="img-box">
+                                    <img src="images/slider-img1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ol class="carousel-indicators">
+                <li data-target="#customCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#customCarousel" data-slide-to="1"></li>
+                <li data-target="#customCarousel" data-slide-to="2"></li>
+            </ol>
+        </div>
+    </section>
+    <!-- end slider section -->
+</div>
+    <!-- info section -->
+    <section class="info_section long_section">
+
+        <div class="container">
+            <div class="contact_nav">
+                <a href="">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <span>
+                        Call : +212 6 97 34 78 83
+                    </span>
+                </a>
+                <a href="">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <span>
+                        Email : support@planche-expert.com
+                    </span>
+                </a>
+            </div>
+
+            <div class="info_top ">
+                <div class="row ">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="info_links">
+                            <h4>
+                                QUICK LINKS
+                            </h4>
+                            <div class="info_links_menu">
+                                <a class="" href="/Index">Home <span class="sr-only">(current)</span></a>
+                                <a class="" href="/Commander">Commander</a>
+                                <a class="" href="/Privacy">Privacy</a>
+                                <a class="" href="/Apropos">A propos</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3 mx-auto">
+                        <div class="info_post">
+                            <h5>
+                                INSTAGRAM FEEDS
+                            </h5>
+                            <div class="post_box">
+                                <div class="img-box">
+                                    <img src="images/tapis_commercial.jpg" alt="">
+                                </div>
+                                <div class="img-box">
+                                    <img src="images/plancher_ceramique.jpg" alt="">
+                                </div>
+                                <div class="img-box">
+                                    <img src="images/plancher_bois.jpeg" alt="">
+                                </div>
+                                <div class="img-box">
+                                    <img src="images/plancher_flottant.jpg" alt="">
+                                </div>
+                                <div class="img-box">
+                                    <img src="images/tapis_qualite.jpg" alt="">
+                                </div>
+                                <div class="img-box">
+                                    <img src="images/logoPE.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info_form">
+                            <h4>
+                                SIGN UP TO OUR NEWSLETTER
+                            </h4>
+                            <form action="">
+                                <input type="text" placeholder="Enter Your Email" />
+                                <button type="submit">
+                                    Subscribe
+                                </button>
+                            </form>
+                            <div class="social_box">
+                                <a href="">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- end info_section -->
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2023 - Plancher_Expert - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    </div>
+</footer>

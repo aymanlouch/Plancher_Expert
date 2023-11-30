@@ -1,0 +1,47 @@
+﻿@page
+@model Plancher_Expert.Pages.updateFournitureModel
+@{
+    ViewData["Title"] = "Modifier un couvre plancher";
+}
+@if (Model.HasData)
+{
+    @foreach (var frnt in Model.fournitureList)
+    {
+        @if (Model.IdP == frnt.Id)
+        {
+            <section class="py-5" style="text-align : center">
+                <div class="container px-4 px-lg-5 my-5">
+                    <div class="row gx-4 gx-lg-5 align-items-center">
+                        <div class="col-md-10">
+                            <h1 class="display-5 fw-bolder">@frnt.FloorType</h1>
+                            <div class="fs-5 mb-5">
+                                <p class="price_heading">
+                                    Prix du materiel : <span>$</span> @frnt.MaterialRate/m²
+                                </p>
+                                <p class="price_heading">
+                                    Prix de la main d'oeuvre : <span>$</span> @frnt.LaborRate/m²
+                                </p>
+                            </div>
+                            <p class="">
+                                Veuillez saisir les nouveaux donnees
+                            </p>
+                            <div class="">
+                                <form href="/gestionFourniture" method="post,get" >
+                                    <input type="number" step="0.01" class="" placeholder="Prix du materiel" name="MaterialRate" required>
+                                    <input type="number" step="0.01" class="" placeholder="Prix de la main d'oeuvre" name="LaborRate" required>
+                                    <p><br /></p>
+                                    <button type="submit" class="btn btn-outline-dark flex-shrink-0" style="background-color : #6bb7be" name="IdP" value="@frnt.Id">Valider</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        }
+    }
+}
+else
+{
+    Response.Redirect("/gestionFourniture");
+}
