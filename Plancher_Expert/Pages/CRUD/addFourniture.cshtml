@@ -1,8 +1,8 @@
 ﻿@page
-@model Plancher_Expert.Pages.addFournitureModel
+@model addFournitureModel
 @{
 }
-<section class="contact_section  long_section" style="text-align : center">
+<section class="contact_section  long_section" >
     <div class="container" >
         <div class="">
             <div class="col-md" >
@@ -12,7 +12,7 @@
                             Ajouter un produit
                         </h2>
                     </div>
-                    <form method="get">
+                    <form method="post">
                         <div>
                             <input type="text" placeholder="Nom du produit" name="FloorType" value="@Model.f.FloorType"/>
                         </div>

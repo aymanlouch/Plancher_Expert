@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Plancher_Expert.Classes;
 using Plancher_Expert.outils;
 
-namespace Plancher_Expert.Pages
+namespace Plancher_Expert.Pages.CRUD
 {
     public class updateFournitureModel : PageModel
     {
@@ -17,16 +17,20 @@ namespace Plancher_Expert.Pages
         public void OnGet()
         {
             HasData = true;
-            fournitureList = Functions.getFourniture();
             IdP = Convert.ToInt32(Request.Query["IdP"]);
-            LaborRate = Convert.ToDouble(Request.Query["LaborRate"]);
-            MaterialRate = Convert.ToDouble(Request.Query["MaterialRate"]);
+            fournitureList = Functions.getFourniture();
 
-            Functions.updateFourniture(IdP, LaborRate, MaterialRate);
+            if (HttpContext.Session.GetString("userType") != "admin")
+                Response.Redirect("/User/Login");
         }
         public void OnPost()
         {
-            RedirectToAction("gestionFourniture");
+            IdP = Convert.ToInt32(Request.Query["IdP"]);
+            LaborRate = Convert.ToDouble(Request.Form["LaborRate"]);
+            MaterialRate = Convert.ToDouble(Request.Form["MaterialRate"]);
+
+            Functions.updateFourniture(IdP, LaborRate, MaterialRate);
+            Response.Redirect("/crud/gestionFourniture");
         }
     }
 }

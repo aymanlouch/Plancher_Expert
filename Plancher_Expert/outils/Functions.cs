@@ -9,7 +9,7 @@ namespace Plancher_Expert.outils
 {
     public class Functions
     {
-        public static List <Fourniture> getFourniture()
+        public static List<Fourniture> getFourniture()
         {
             List<Fourniture> fournitureList = new List<Fourniture>();
 
@@ -26,7 +26,7 @@ namespace Plancher_Expert.outils
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())
-                            {   
+                            {
 
                                 Fourniture f = new Fourniture();
 
@@ -43,7 +43,7 @@ namespace Plancher_Expert.outils
                     }
                 }
             }
-            catch(Exception e) 
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
 
@@ -52,7 +52,7 @@ namespace Plancher_Expert.outils
             return fournitureList;
         }
 
-            
+
         public static Fourniture getFournitureById(int IdP)
         {
             Fourniture f = new Fourniture();
@@ -121,6 +121,7 @@ namespace Plancher_Expert.outils
                         command.Parameters.AddWithValue("@Width", Width);
                         command.ExecuteNonQuery();
                         Console.WriteLine("Facture inserted to database");
+                        Console.WriteLine("------");
                     }
                 }
             }
@@ -152,6 +153,7 @@ namespace Plancher_Expert.outils
 
                         command.ExecuteNonQuery();
                         Console.WriteLine("Table mise a jour");
+                        Console.WriteLine("------");
                     }
                 }
             }
@@ -177,14 +179,15 @@ namespace Plancher_Expert.outils
                     using (SqlCommand command = new SqlCommand(sqlQuery, connexion))
                     {
                         command.Parameters.AddWithValue("@IdP", IdP);
-                       
+
                         Console.WriteLine("Requete SQL: " + sqlQuery);
 
-                        Console.WriteLine("IdP a supprimer ",IdP);
+                        Console.WriteLine("IdP a supprimer ", IdP);
 
                         command.ExecuteNonQuery();
 
                         Console.WriteLine("Table mise a jour");
+                        Console.WriteLine("------");
                     }
                 }
             }
@@ -206,7 +209,7 @@ namespace Plancher_Expert.outils
                 using (SqlConnection connexion = new SqlConnection(connexionString))
                 {
                     connexion.Open();
-                    string sqlQuery = "INSERT INTO Fourniture (FloorType, MaterialRate, LaborRate, Image, nomID, Description) VALUES (@FloorType, @MaterialRate, @LaborRate, , @nomID, @Description)";
+                    string sqlQuery = "INSERT INTO Fourniture (FloorType, MaterialRate, LaborRate, nomID, Description) VALUES (@FloorType, @MaterialRate, @LaborRate, @nomID, @Description)";
                     using (SqlCommand command = new SqlCommand(sqlQuery, connexion))
                     {
                         command.Parameters.AddWithValue("@FloorType", FloorType);
@@ -216,10 +219,11 @@ namespace Plancher_Expert.outils
                         command.Parameters.AddWithValue("@Description", Description);
 
                         Console.WriteLine("Requete SQL: " + sqlQuery);
-
-            
+                        Console.WriteLine("------");
 
                         command.ExecuteNonQuery();
+
+                        return true;
                     }
                 }
 
@@ -231,8 +235,152 @@ namespace Plancher_Expert.outils
                 return false;
 
             }
-            
-            return true;
         }
+
+
+
+        //GetUser
+        public static Users getUser(string userLogin, string userPw)
+        {
+            Users utilisateurData = new Users();
+            try
+            {
+                string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=plancher_expert;Integrated Security=True";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    String sql = "SELECT * FROM users WHERE userLogin=@Login AND userPw = @Pw";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Login", userLogin);
+                        cmd.Parameters.AddWithValue("@Pw", userPw);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                utilisateurData.id = reader.GetInt32(0);
+                                utilisateurData.firstName = reader.GetString(1);
+                                utilisateurData.lastName = reader.GetString(2);
+                                utilisateurData.userType = reader.GetString(5);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.ToString());
+            }
+            return utilisateurData;
+        }
+
+
+        //VerifierUtilisateurExiste
+        public static bool VerifierUtilisateurExiste(string userLogin)
+        {
+            try
+            {
+                string connexionString = "Data Source=.\\sqlexpress;Initial Catalog=plancher_expert;Integrated Security=True";
+                using (SqlConnection connection = new SqlConnection(connexionString))
+                {
+                    connection.Open();
+                    String sql = "SELECT * FROM users WHERE userLogin = @Login";
+                    using (SqlCommand cmd = new SqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Login", userLogin);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                Console.WriteLine("User login :" + userLogin);
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.ToString());
+                return false;
+            }
+        }
+
+        
+        //VerifierPw
+        public static bool VerifierPw(string userLogin, string userPw)
+        {
+            try
+            {
+                string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=plancher_expert;Integrated Security=True";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    String sql = "SELECT * FROM users WHERE userLogin=@Login AND userPw = @Pw";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Login", userLogin);
+                        cmd.Parameters.AddWithValue("@Pw", userPw);
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                                return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.ToString());
+                return false;
+            }
+        }
+
+
+        //addUser
+        public static bool addUser(string firstName, string lastName, string userLogin, string userPw)
+        {
+            string userType = "user";
+            try
+            {
+                string connexionString = "Data Source=.\\sqlexpress;Initial Catalog=plancher_expert;Integrated Security=True";
+                using (SqlConnection connexion = new SqlConnection(connexionString))
+                {
+                    connexion.Open();
+                    string sqlQuery = "INSERT INTO users (firstName, lastName, userLogin, userPw, userType) VALUES (@firstName," +
+                        "@lastName, @userLogin, @userPw, @userType)";
+                    using (SqlCommand command = new SqlCommand(sqlQuery, connexion))
+                    {
+                        command.Parameters.AddWithValue("@firstName", firstName);
+                        command.Parameters.AddWithValue("@lastName", lastName);
+                        command.Parameters.AddWithValue("@userLogin", userLogin);
+                        command.Parameters.AddWithValue("@userPw", userPw);
+                        command.Parameters.AddWithValue("@userType", userType);
+
+                        Console.WriteLine("Utilisateur cree avec succes, Name : " + firstName +" "+ lastName);
+                        Console.WriteLine("------");
+
+                        command.ExecuteNonQuery();
+
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+                return false;
+            }
+        }
+
+
+
+
     }
 }

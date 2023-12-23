@@ -26,10 +26,10 @@
                                         <h6 class="price_heading">
                                             <span>$</span> @frnt.MaterialRate /m²
                                         </h6>
-                                        <a href="/updateFourniture?IdP=@frnt.Id">
+                                        <a href="/crud/updateFourniture?IdP=@frnt.Id">
                                             Modifier
                                         </a>
-                                        <a href="/deleteFourniture?IdP=@frnt.Id">
+                                        <a href="/crud/deleteFourniture?IdP=@frnt.Id">
                                             Supprimer
                                         </a>
                                     </div>
@@ -40,7 +40,30 @@
                 </div>
             </form>
         </div>
+        
     </section>
+
+    <section class="col-sm-6 col-md-4 col-lg-3 mx-auto">
+        <div class="contact_section" style="padding-top:0; padding-bottom:0">
+            <div class="container" style="padding-left: 0px;padding-right: 0px;">
+            <div class="">
+                <div class="col-md">
+                    <div class="form_container">
+
+                            <form action="/crud/addFourniture">
+                            <div class="btn_box">
+                                <button type="submit">Ajouter un produit</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    
 
     <!-- end furniture section -->
     <!-- jQery -->
@@ -59,3 +82,7 @@
         &copy; 2023 - Plancher_Expert - <a asp-area="" asp-page="/Privacy">Privacy</a>
     </div>
 </footer>
+
+
+<link rel="stylesheet" href="~/css/Style.css">
+

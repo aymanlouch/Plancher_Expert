@@ -1,5 +1,5 @@
 ﻿@page
-@model Plancher_Expert.Pages.updateFournitureModel
+@model updateFournitureModel
 @{
     ViewData["Title"] = "Modifier un couvre plancher";
 }
@@ -26,11 +26,11 @@
                                 Veuillez saisir les nouveaux donnees
                             </p>
                             <div class="">
-                                <form href="/gestionFourniture" method="post,get" >
+                                <form method="post">
                                     <input type="number" step="0.01" class="" placeholder="Prix du materiel" name="MaterialRate" required>
                                     <input type="number" step="0.01" class="" placeholder="Prix de la main d'oeuvre" name="LaborRate" required>
                                     <p><br /></p>
-                                    <button type="submit" class="btn btn-outline-dark flex-shrink-0" style="background-color : #6bb7be" name="IdP" value="@frnt.Id">Valider</button>
+                                    <button type="submit" class="btn btn-outline-dark flex-shrink-0" style="background-color : #6bb7be" name="IdP" value="@frnt.Id"  >Valider</button>
                                 </form>
                             </div>
                         </div>

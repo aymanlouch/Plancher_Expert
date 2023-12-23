@@ -58,15 +58,46 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-page="/Apropos">A Propos</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-page="/gestionFourniture">Gestion</a>
-                            </li>
+                            @if (Context.Session.GetString("userType") == "admin")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-page="crud/gestionFourniture">Gestion</a>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
-                <a class="navbar-brand" href="#">
-                    <img src="~/Images/logoPE.png" alt="..." height="36">
-                </a>
+                
+                <ul class="navbar-nav ">
+                    <li class="nav-item">
+                        @if (Context.Session.GetString("userAuthenticated") == null)
+                        {
+                            <a class="nav-link" asp-area="" asp-page="/User/Login">
+                                Se connecter
+                                <img src="~/Images/logoPE.png" alt="..." height="36">
+                            </a>
+                        }
+                        else
+                        {
+                            <p class="nav-link">
+                                <strong>
+                                    @Context.Session.GetString("userFirstName")
+                                    @Context.Session.GetString("userLastName")
+                                </strong>
+                                <a class="navbar-brand" href="#">
+                                    <img src="~/Images/logoPE.png" alt="..." height="36">
+                                </a>
+                                <a class="text-dark" asp-area="" asp-page="/User/LogOut">
+                                    Se deconnecter
+                                </a>
+                            </p>
+                        }
+                    </li>
+                </ul>
+
+                
+
+
             </nav>
         </header>
         <!-- END OF header section -->
